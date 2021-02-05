@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -14,15 +15,25 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryBrandDal()
         {
             _brands = new List<Brand> { 
-                new Brand {BrandID = 1 , BrandDescription = "Audi" },
-                new Brand {BrandID = 2, BrandDescription = "Ford" }, 
-                new Brand {BrandID = 3,BrandDescription = "BMW"}
+                new Brand {BrandID = 1 , BrandName = "Audi" },
+                new Brand {BrandID = 2, BrandName = "Ford" }, 
+                new Brand {BrandID = 3,BrandName = "BMW"}
                                         };
+        }
+
+        public void Add(Brand entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddBrand(Brand brand)
         {
             _brands.Add(brand);
+        }
+
+        public void Delete(Brand entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void DeleteBrand(Brand brand)
@@ -31,21 +42,21 @@ namespace DataAccess.Concrete.InMemory
             _brands.Remove(brandToDelete);
         }
 
-        public List<Brand> GetBrandByID(int BrandID)
-        { 
-            return _brands.Where(b => b.BrandID == BrandID).ToList();
+        public Brand Get(Expression<Func<Brand, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
-        public List<Brand> GetBrands()
+        public List<Brand> getAll(Expression<Func<Brand, bool>> filter = null)
         {
             return _brands;
         }
 
-        public void UpdateBrand(Brand brand)
+        public void Update(Brand entity)
         {
-            Brand brandToUpdate = _brands.SingleOrDefault(b => b.BrandID == brand.BrandID);
-            brandToUpdate.BrandID = brand.BrandID;
-            brandToUpdate.BrandDescription = brand.BrandDescription;
+            Brand brandToUpdate = _brands.SingleOrDefault(b => b.BrandID == entity.BrandID);
+            brandToUpdate.BrandID = entity.BrandID;
+            brandToUpdate.BrandName = entity.BrandName;
         }
     }
 }

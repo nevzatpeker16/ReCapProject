@@ -5,15 +5,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    public interface IBrandDal
+    public interface IBrandDal:IEntityRepository<Brand>
     {
-        void AddBrand(Brand brand);
-        void DeleteBrand(Brand brand);
-        void UpdateBrand(Brand brand);
-
-        List<Brand> GetBrands();
-
-        List<Brand> GetBrandByID(int BrandID);
-
     }
 }

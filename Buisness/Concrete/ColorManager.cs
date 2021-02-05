@@ -19,7 +19,7 @@ namespace Buisness.Concrete
 
         public List<Color> GetAllColors()
         {
-            return _colorDal.GetAllColors();
+            return _colorDal.getAll();
         }
     }
 }

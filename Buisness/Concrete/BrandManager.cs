@@ -20,7 +20,7 @@ namespace Buisness.Concrete
 
         public List<Brand> GetBrands()
         {
-            return _brandDal.GetBrands();
+            return _brandDal.getAll();
             
         }
     }
