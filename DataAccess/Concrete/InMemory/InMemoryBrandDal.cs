@@ -23,24 +23,18 @@ namespace DataAccess.Concrete.InMemory
 
         public void Add(Brand entity)
         {
-            throw new NotImplementedException();
+            _brands.Add(entity);
         }
 
-        public void AddBrand(Brand brand)
-        {
-            _brands.Add(brand);
-        }
+
 
         public void Delete(Brand entity)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteBrand(Brand brand)
-        {
-            Brand brandToDelete = _brands.SingleOrDefault(c => c.BrandID == brand.BrandID);
+            Brand brandToDelete = _brands.SingleOrDefault(c => c.BrandID == entity.BrandID);
             _brands.Remove(brandToDelete);
         }
+
+
 
         public Brand Get(Expression<Func<Brand, bool>> filter)
         {

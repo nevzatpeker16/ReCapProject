@@ -12,7 +12,7 @@ namespace ConsoleUserInterface
         {
             CarManager carManager1 = new CarManager(new EfCarDal());
             Console.WriteLine("Burada Entity Framework ' u deneyeceğiz ");
-            Car nevzat = new Car() {CarID = 1 , ColorID = 1 , BrandID = 1 , DailyPrice = 0 , Description = "Audi",ModelYear = 2021  };
+            Car nevzat = new Car() {CarID = 1 , ColorID = 1 , BrandID = 1 , DailyPrice = 5 , Description = "Audi",ModelYear = 2021  };
             carManager1.AddCar(nevzat);
             foreach (var cars in carManager1.GetCars())
             {
