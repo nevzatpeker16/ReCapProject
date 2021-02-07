@@ -27,7 +27,6 @@ namespace Buisness.Concrete
         {
             return _carDal.getAll(p => p.ModelYear == modelYear);
 
-            //Yarın buradan devam et. 
         }
         public List<Car> GetCarsByColorID(int colorID)
         {
@@ -56,6 +55,14 @@ namespace Buisness.Concrete
                 
 
 
+        }
+        public void DeleteCar(Car car)
+        {
+            _carDal.Delete(car);
+        }
+        public void UpdateCar(Car car)
+        {
+            _carDal.Update(car);
         }
 
         public List<CarDetailDto> GetCarDetail()
