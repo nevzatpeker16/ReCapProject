@@ -1,4 +1,7 @@
 ﻿using Buisness.Abstract;
+using Buisness.Constants;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -18,56 +21,61 @@ namespace Buisness.Concrete
             _carDal = carDal;
         }
 
-        public List<Car> GetCars()
+        public IDataResult<List<Car>> GetCars()
         {
-            return _carDal.getAll();  
+            return new SuccessDataResult<List<Car>>(_carDal.getAll(),Messages.Listed);  
         }
 
-        public List<Car> GetCarsByModelYear(int modelYear)
+        public IDataResult<List<Car>> GetCarsByModelYear(int modelYear)
         {
-            return _carDal.getAll(p => p.ModelYear == modelYear);
+            return new SuccessDataResult<List<Car>>(_carDal.getAll(p => p.ModelYear == modelYear),Messages.Listed);
 
         }
-        public List<Car> GetCarsByColorID(int colorID)
+        public IDataResult<List<Car>> GetCarsByColorID(int colorID)
         {
-            return _carDal.getAll(p => p.ColorID == colorID);
+            return new SuccessDataResult<List<Car>>( _carDal.getAll(p => p.ColorID == colorID),Messages.Listed);
         }
-        public void AddCar(Car car)
+        public IResult AddCar(Car car)
         {
 
             if (car.Description.Length > 1)
             {
                 if (car.DailyPrice > 0) { 
                         
-                    _carDal.Add(car);
+                   _carDal.Add(car);
+                    return new SuccessResult(Messages.Added);
 
                 }
                 else
                 {
-                    throw new Exception("Araç günlük fiyatı 0 dan büyük olmalıdır.");
+                    return new ErorResult("Araç fiyatı 0 dan büyük olmalıdır");
 
                 }
             }
             else
             {
-                throw new System.Exception("Araç Adı 2 Karakterden  kısa olamaz.");
+                return new ErorResult("Araç Adı 2 karakterden büyük olmalı.");
             }
+
+            //Bu mesajları da constant olarak ekleyebilirdim aslında saat 23:22 olunca biraz kafa uğraşmak istemiyor bununla.
                 
 
 
         }
-        public void DeleteCar(Car car)
+        public IResult DeleteCar(Car car)
         {
             _carDal.Delete(car);
+            return new SuccessResult(Messages.Deleted);
         }
-        public void UpdateCar(Car car)
+        public IResult UpdateCar(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.Updated);
         }
 
-        public List<CarDetailDto> GetCarDetail()
+        public IDataResult<List<CarDetailDto>> GetCarDetail()
         {
-            return _carDal.GetCarDetail();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetail(),Messages.Listed);
         }
     }
 }

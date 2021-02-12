@@ -7,6 +7,9 @@ namespace Entities.DTOs
     public class CarDetailDto
     {
 
+        //DTO'lar ilişkili tabloların verilerini çekmeye yarayan yapılardır. 
+        //DATA TRANSFER OBJECT
+
         public int CarID { get; set; }
 
         public string BrandName { get; set; }

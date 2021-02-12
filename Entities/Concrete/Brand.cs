@@ -5,6 +5,8 @@ using System.Text;
 
 namespace Entities.Concrete
 {
+
+    //IEntity nesneleri , veritabanı nesneleridir. 
     public class Brand : IEntity
     {
         public int BrandID { get; set; }
