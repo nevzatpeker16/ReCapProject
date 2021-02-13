@@ -5,6 +5,7 @@ using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,9 +21,10 @@ namespace Buisness.Concrete
         }
         public IResult AddRental(Rental rental)
         {
-            if(rental.ReturnDate == null)
+            if(rental.CarID == null)
             {
-                return new ErorResult("Bu araç ne yazık ki iade edilmemiş");
+                return new ErorResult("Araç ID boş geçilemez");
+                
             }
             else {
                 _rentalDal.Add(rental);
@@ -42,5 +44,14 @@ namespace Buisness.Concrete
             return new SuccessResult(Messages.Deleted);
         }
 
+        public IDataResult<Rental> GetRentalByID(Rental rental)
+        {
+            _rentalDal.Get(p => p.RentalID == rental.RentalID);
+            return new SuccessDataResult<Rental>(_rentalDal.Get(p => p.RentalID == rental.RentalID), Messages.Listed);
+        }
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetail(), Messages.Listed);
+        }
     }
 }

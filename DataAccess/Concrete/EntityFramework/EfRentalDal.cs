@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -12,6 +13,16 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public EfRentalDal()
         {
+
+        }
+        public List<RentalDetailDto> GetRentalDetail()
+        {
+            using (MyDbContext myDbContext = new MyDbContext())
+            {
+                var result = from rn in myDbContext.Rentals
+                             join cr in myDbContext.Cars on rn.CarID equals cr.CarID
+                             join cus in myDbContext.Customers on rn.CustomerID equals cus.CustomerID
+            }
 
         }
     }

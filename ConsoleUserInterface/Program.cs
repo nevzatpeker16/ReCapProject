@@ -12,6 +12,7 @@ namespace ConsoleUserInterface
         static void Main(string[] args)
         {
             CarManager carManager1 = new CarManager(new EfCarDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
             Console.WriteLine("Burada Entity Framework ' u deneyeceğiz ");
             //            arabaGetir(carManager1);
             tumOzellikler(carManager1);
@@ -21,6 +22,13 @@ namespace ConsoleUserInterface
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             //           markaEkle(brandManager);
 
+
+
+        }
+        private static void arabaKirala(RentalManager rentalManager)
+        {
+            Rental rental = new Rental { CarID = 1, CustomerID = 1, RentalDate = DateTime.Now, RentalID = 1 };
+            rentalManager.AddRental(rental)
 
 
         }
