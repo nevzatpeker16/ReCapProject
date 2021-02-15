@@ -17,13 +17,14 @@ namespace DataAccess.Concrete.EntityFramework
         {
         }
 
-        public List<CarDetailDto> GetCarDetail()
+        public List<CarDetailDto> GetCarDetail(int carID)
         {
             using(MyDbContext myDbContext =  new MyDbContext())
             {
                 var result = from cd in myDbContext.Cars
                              join cl in myDbContext.Colors on cd.ColorID equals cl.ColorID
                              join br in myDbContext.Brands on cd.BrandID equals br.BrandID
+                             where cd.CarID == carID
                              select new CarDetailDto {   CarID = cd.CarID , 
                                                          Description = cd.Description ,
                                                          BrandName = br.BrandName ,
