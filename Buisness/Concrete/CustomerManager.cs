@@ -29,7 +29,7 @@ namespace Buisness.Concrete
         }
         public IResult UpdateCustomer(Customer customer)
         {
-            _customerDal.Update(customer)
+            _customerDal.Update(customer);
                 return new SuccessResult(Messages.Updated);
         }
     }

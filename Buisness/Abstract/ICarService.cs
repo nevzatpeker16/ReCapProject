@@ -12,8 +12,15 @@ namespace Buisness.Abstract
         IDataResult<List<Car>> GetCars();
 
         IDataResult<List<Car>> GetCarsByModelYear(int modelYear);
+        IDataResult<Car> GetCarsByCarID(int carID);
 
         IDataResult<List<CarDetailDto>> GetCarDetail();
-       
+
+        IResult AddCar(Car car);
+
+        IResult DeleteCar(Car car);
+        IResult UpdateCar(Car car); 
+
+           
     }
 }

@@ -9,6 +9,10 @@ namespace Buisness.Abstract
     public interface IBrandService
     {
         IDataResult<List<Brand>> GetBrands();
+        IResult AddBrand(Brand brand);
+
+        IResult DeleteBrand(Brand brand);
+        IResult UpdateBrand(Brand brand);
 
     }
 }

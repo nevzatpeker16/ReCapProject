@@ -28,7 +28,7 @@ namespace ConsoleUserInterface
         private static void arabaKirala(RentalManager rentalManager)
         {
             Rental rental = new Rental { CarID = 1, CustomerID = 1, RentalDate = DateTime.Now, RentalID = 1 };
-            rentalManager.AddRental(rental)
+            rentalManager.AddRental(rental);
 
 
         }
