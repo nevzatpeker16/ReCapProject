@@ -63,16 +63,17 @@ namespace ConsoleUserInterface
         }
         private static void tumOzellikler(CarManager carManager1)
         {
+            int carID = 0;
 
-            var carDetail = carManager1.GetCarDetail();
-            if(carDetail.Success == true)
+            var carDetail = carManager1.GetCarDetail(carID);
+            if (carDetail.Success == true)
             {
                 foreach (var cardetail in carDetail.Data)
                 {
-                    Console.WriteLine(cardetail.BrandName+" " +cardetail.ColorName +" "+ cardetail.DailyPrice+"  " +cardetail.Description+ "  " +cardetail.ModelYear);
+                    Console.WriteLine(cardetail.BrandName + " " + cardetail.ColorName + " " + cardetail.DailyPrice + "  " + cardetail.Description + "  " + cardetail.ModelYear);
                 }
             }
-
+           
 
         }
     }

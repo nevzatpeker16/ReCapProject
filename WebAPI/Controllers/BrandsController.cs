@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BrandsController : ControllerBase
 
     {
@@ -35,6 +37,32 @@ namespace WebAPI.Controllers
         public IActionResult DeleteBrand(Brand brand)
         {
             var result = _brandService.DeleteBrand(brand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        [HttpPost("addbrand")]
+        public IActionResult AddBrand(Brand brand)
+        {
+            var result = _brandService.AddBrand(brand);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result);
+            }
+        }
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _brandService.GetBrands();
             if (result.Success)
             {
                 return Ok(result);

@@ -12,7 +12,7 @@ namespace Buisness.Abstract
 
         IResult DeleteCustomer(Customer customer);
 
-
+        IDataResult<List<Customer>> ListCustomers();
         IResult UpdateCustomer(Customer customer);
        
     }

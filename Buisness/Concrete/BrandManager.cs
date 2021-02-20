@@ -1,5 +1,7 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Buisness.ValidationRules;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -20,6 +22,7 @@ namespace Buisness.Concrete
         {
             _brandDal = brandDal;
         }
+        [ValidationAspect(typeof(BrandValidator))]
 
         public IDataResult<List<Brand>> GetBrands()
         {
@@ -27,17 +30,19 @@ namespace Buisness.Concrete
             return new SuccessDataResult<List<Brand>>(_brandDal.getAll(),true, Messages.Listed);
             
         }
-
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult AddBrand (Brand brand)
         {
              _brandDal.Add(brand);
             return new SuccessResult(Messages.Added);
         }
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult UpdateBrand(Brand brand)
         {
             _brandDal.Update(brand);
             return new SuccessResult(Messages.Updated);
         }
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult DeleteBrand(Brand brand)
         {
             _brandDal.Delete(brand);

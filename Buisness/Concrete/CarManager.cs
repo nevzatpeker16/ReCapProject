@@ -1,5 +1,7 @@
 ﻿using Buisness.Abstract;
 using Buisness.Constants;
+using Buisness.ValidationRules;
+using Core.Aspect.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
@@ -20,21 +22,23 @@ namespace Buisness.Concrete
         {
             _carDal = carDal;
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IDataResult<List<Car>> GetCars()
         {
             return new SuccessDataResult<List<Car>>(_carDal.getAll(),Messages.Listed);  
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IDataResult<List<Car>> GetCarsByModelYear(int modelYear)
         {
             return new SuccessDataResult<List<Car>>(_carDal.getAll(p => p.ModelYear == modelYear),Messages.Listed);
 
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IDataResult<List<Car>> GetCarsByColorID(int colorID)
         {
             return new SuccessDataResult<List<Car>>( _carDal.getAll(p => p.ColorID == colorID),Messages.Listed);
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult AddCar(Car car)
         {
 
@@ -62,22 +66,24 @@ namespace Buisness.Concrete
 
 
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult DeleteCar(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.Deleted);
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult UpdateCar(Car car)
         {
             _carDal.Update(car);
             return new SuccessResult(Messages.Updated);
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IDataResult<List<CarDetailDto>> GetCarDetail(int carID)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetail(carID),Messages.Listed);
         }
-
+        [ValidationAspect(typeof(CarValidator))]
         public IDataResult<Car> GetCarsByCarID(int carID)
         {
             return new SuccessDataResult<Car>(_carDal.Get(p => p.CarID == carID), Messages.Listed);
