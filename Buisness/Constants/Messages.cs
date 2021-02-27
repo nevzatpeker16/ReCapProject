@@ -12,5 +12,6 @@ namespace Buisness.Constants
         public static string Deleted = "Silindi";
         public static string Updated = "Güncellendi";
         public static string Listed = "Listelendi";
+        public static string toMuchPhoto = "5 Adetten fazla fotoğraf ekleyemezsiniz.";
     }
 }
