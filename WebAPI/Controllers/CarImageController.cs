@@ -1,5 +1,6 @@
 ﻿using Buisness.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,9 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPost("addcarımage")]
-        public IActionResult AddCarImage(CarImage carImage)
+        public IActionResult AddCarImage([FromForm(Name = ("Image"))] IFormFile formFile, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.AddCarImage(carImage);
+            var result = _carImageService.AddCarImage(formFile,carImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -55,9 +56,9 @@ namespace WebAPI.Controllers
             }
         }
         [HttpPost("updatecarımage")]
-        public IActionResult UpdateCarImage(CarImage carImage)
+        public IActionResult UpdateCarImage([FromForm(Name = ("Image"))] IFormFile formFile, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.DeleteCarImage(carImage);
+            var result = _carImageService.UpdateCarImage(formFile,carImage);
             if (result.Success)
             {
                 return Ok(result);

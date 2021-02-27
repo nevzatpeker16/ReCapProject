@@ -13,5 +13,6 @@ namespace Buisness.Constants
         public static string Updated = "Güncellendi";
         public static string Listed = "Listelendi";
         public static string toMuchPhoto = "5 Adetten fazla fotoğraf ekleyemezsiniz.";
+        public static string eror = "Hata";
     }
 }

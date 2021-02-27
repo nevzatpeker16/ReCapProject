@@ -10,7 +10,7 @@ namespace Buisness.ValidationRules
     {
         public CarImageValidator()
         {
-  
+            RuleFor(p => p.CarID).NotEmpty().WithMessage("Car ID boş olamaz");
         }
     }
 }
