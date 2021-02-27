@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.DeleteCarImage(carImage);
             if (result.Success)
             {
-                return Ok(result)
+                return Ok(result);
             }
             else
             {
@@ -60,7 +60,7 @@ namespace WebAPI.Controllers
             var result = _carImageService.DeleteCarImage(carImage);
             if (result.Success)
             {
-                return Ok(result)
+                return Ok(result);
             }
             else
             {
