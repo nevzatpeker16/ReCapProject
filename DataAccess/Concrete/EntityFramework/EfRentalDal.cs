@@ -40,7 +40,6 @@ namespace DataAccess.Concrete.EntityFramework
                                 FirstName = us.FirstName,
                                 LastName = us.LastName,
                                 ModelYear = cd.ModelYear,
-                                Password = us.Password,
                                 RentalDate = rn.RentalDate,
                                 ReturnDate = rn.ReturnDate,
                                 UserID = us.UserID

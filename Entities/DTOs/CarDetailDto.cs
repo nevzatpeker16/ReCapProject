@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.DTOs
 {
-    public class CarDetailDto
+    public class CarDetailDto:IDto
     {
 
         //DTO'lar ilişkili tabloların verilerini çekmeye yarayan yapılardır. 

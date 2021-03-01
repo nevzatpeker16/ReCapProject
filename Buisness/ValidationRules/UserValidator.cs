@@ -12,7 +12,7 @@ namespace Buisness.ValidationRules
         {
             RuleFor(u => u.FirstName).NotEmpty().WithMessage("First name boş olamaz");
             RuleFor(u => u.LastName).NotEmpty().WithMessage("Last name boş olamaz");
-            RuleFor(u => u.Password).NotEmpty().WithMessage("Password boş olamaz");
+            //RuleFor(u => u.Password).NotEmpty().WithMessage("Password boş olamaz");
             
         }
     }
