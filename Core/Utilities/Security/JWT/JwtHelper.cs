@@ -2,13 +2,15 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Security.Claims;
 using System.Linq;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using Core.Utilities.Security.Encyription;
 using Core.Extensions;
+using Microsoft.Extensions.Configuration;
+
+
 
 namespace Core.Utilities.Security.JWT
 {

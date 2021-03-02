@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Buisness.Constants
@@ -14,5 +15,6 @@ namespace Buisness.Constants
         public static string Listed = "Listelendi";
         public static string toMuchPhoto = "5 Adetten fazla fotoğraf ekleyemezsiniz.";
         public static string eror = "Hata";
+        public static string AuthorizationDenied = "Yetkilendirme reddedildi.";
     }
 }
